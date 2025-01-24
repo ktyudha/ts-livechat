@@ -1,9 +1,0 @@
-{"level":"info","message":"GET / from ::1 at 1/24/2025, 7:58:23 AM","service":"user-service"}
-{"level":"info","message":"GET / from ::1 at 1/24/2025, 10:27:21 AM","service":"user-service"}
-{"level":"info","message":"GET /api/v1/users from ::1 at 1/24/2025, 10:27:44 AM","service":"user-service"}
-{"level":"info","message":"GET /api/v1/users/user from ::1 at 1/24/2025, 10:27:57 AM","service":"user-service"}
-{"level":"info","message":"GET /favicon.ico from ::1 at 1/24/2025, 10:27:57 AM","service":"user-service"}
-{"level":"info","message":"GET /api/v1/users/user from ::1 at 1/24/2025, 10:28:05 AM","service":"user-service"}
-{"level":"info","message":"GET /api/v1/users from ::1 at 1/24/2025, 10:28:16 AM","service":"user-service"}
-{"level":"info","message":"GET /api/v1/users from ::1 at 1/24/2025, 10:29:42 AM","service":"user-service"}
-{"level":"info","message":"GET /api/v1/users from ::1 at 1/24/2025, 10:30:19 AM","service":"user-service"}

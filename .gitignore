@@ -1,5 +1,17 @@
-node_modules
+# Ignore node_modules
+node_modules/
+
+# Ignore environment files
 .env
-log
-dist
-public
+
+# Ignore build/output directories
+dist/
+build/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+logs/
