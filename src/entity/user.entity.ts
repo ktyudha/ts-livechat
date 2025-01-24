@@ -7,6 +7,7 @@ import {
   ManyToOne,
 } from "typeorm";
 import { IsEmail, MinLength } from "class-validator";
+import { Exclude } from "class-transformer";
 import { Group } from "./group.entity";
 @Entity("users")
 export class User {
@@ -33,8 +34,10 @@ export class User {
   email!: string;
 
   @CreateDateColumn()
+  @Exclude()
   createdAt!: Date; // Di-set otomatis oleh TypeORM ketika data dibuat
 
   @UpdateDateColumn()
+  @Exclude()
   updatedAt!: Date; // Di-set otomatis oleh TypeORM ketika data diperbarui
 }

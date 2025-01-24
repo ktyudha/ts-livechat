@@ -13,13 +13,14 @@ export class BaseModel<T extends { id: string }> {
     return this.repository.save(entity);
   }
 
-  async getAll(): Promise<T[]> {
-    return this.repository.find();
+  async getAll(relations?: string[]): Promise<T[]> {
+    return this.repository.find({ relations });
   }
 
-  async findById(id: string): Promise<T> {
+  async findById(id: string, relations?: string[]): Promise<T> {
     return this.repository.findOneOrFail({
       where: { id } as FindOptionsWhere<T>,
+      relations: relations,
     });
   }
   async update(id: string, data: any): Promise<T | null> {
