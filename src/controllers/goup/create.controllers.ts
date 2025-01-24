@@ -1,18 +1,16 @@
 import { Request, Response } from "express";
-import { UserModel } from "../../models/user.model";
+import { GroupModel } from "../../models/group.model";
 import { plainToInstance } from "class-transformer";
-import { CreateUserDto } from "../../dto/user/create-user.dto";
+import { CreateGroupDto } from "../../dto/group/create-group.dto";
 import message from "../../views/message";
 import { validate } from "class-validator";
 
-const userModel = new UserModel();
-async function storeUser(req: Request, res: Response) {
+const model = new GroupModel();
+async function store(req: Request, res: Response) {
   try {
-    // Konversi request body menjadi instance DTO
-    const userDto = plainToInstance(CreateUserDto, req.body);
+    const dto = plainToInstance(CreateGroupDto, req.body);
 
-    // Lakukan validasi
-    const errors = await validate(userDto);
+    const errors = await validate(dto);
     if (errors.length > 0) {
       return res.status(400).json({
         message: "Validation errors",
@@ -23,22 +21,20 @@ async function storeUser(req: Request, res: Response) {
       });
     }
 
-    // Simpan data ke database
-    const user = await userModel.createUser(req.body);
+    const data = await model.create(req.body);
 
-    // Kirim respons
     return res.status(201).json(
       message({
         statusCode: 201,
         message: "success",
-        data: user,
+        data: data,
       })
     );
   } catch (error: any) {
     return res.status(500).json({
-      message: "Error storing user",
+      message: "Server error",
       error: error.message || error,
     });
   }
 }
-export { storeUser };
+export { store };

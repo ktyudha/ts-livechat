@@ -2,6 +2,7 @@ import { DataSource } from "typeorm";
 
 // Sesuaikan entitas yang digunakan
 import { User } from "../entity/user.entity";
+import { Group } from "../entity/group.entity";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -12,10 +13,11 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_DATABASE,
   synchronize: true,
   logging: true, // Log query yang dijalankan
-  entities: [User], // Entitas yang digunakan
+  entities: [Group, User], // Entitas yang digunakan
   migrations: [], // Sesuaikan jika menggunakan migrasi
   subscribers: [], // Jika menggunakan subscriber, sesuaikan
 });
+
 export default async function connectDatabase() {
   try {
     // Inisialisasi koneksi ke database

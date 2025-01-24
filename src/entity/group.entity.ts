@@ -4,33 +4,22 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
+  // OneToMany,
 } from "typeorm";
-import { IsEmail, MinLength } from "class-validator";
-import { Group } from "./group.entity";
-@Entity("users")
-export class User {
+import { MinLength } from "class-validator";
+// import { User } from "./user.entity";
+
+@Entity("groups")
+export class Group {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
-
-  @ManyToOne(() => Group)
-  group!: Group;
 
   @Column()
   @MinLength(3)
   name!: string;
 
-  @Column({ unique: true })
-  @MinLength(3)
-  username!: string;
-
-  @Column()
-  @MinLength(5)
-  password!: string;
-
-  @Column({ unique: true })
-  @IsEmail()
-  email!: string;
+  // @OneToMany(() => User, (user) => user.group)
+  // users!: User[];
 
   @CreateDateColumn()
   createdAt!: Date; // Di-set otomatis oleh TypeORM ketika data dibuat

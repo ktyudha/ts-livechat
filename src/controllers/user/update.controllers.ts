@@ -3,14 +3,20 @@ import { UserModel } from "../../models/user.model";
 import message from "../../views/message";
 
 const userModel = new UserModel();
-async function destroyUser(req: Request, res: Response) {
+async function editUser(req: Request, res: Response) {
   const { id } = req.params;
   try {
-    await userModel.deleteUser(id);
+    const updatedUser = await userModel.update(id, req.body);
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
     return res.send(
       message({
         statusCode: 200,
         message: "success",
+        data: updatedUser,
       })
     );
   } catch (error: any) {
@@ -20,4 +26,4 @@ async function destroyUser(req: Request, res: Response) {
     });
   }
 }
-export { destroyUser };
+export { editUser };
