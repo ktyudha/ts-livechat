@@ -12,7 +12,7 @@ function WebSocket(app: Express) {
   io.on("connection", (socket: Socket) => {
     console.log(`[socket]: ${socket.id} is connected`);
     socket.on("disconnect", () => {
-      // clearInterval(interval);
+      clearInterval(interval);
     });
   });
 
