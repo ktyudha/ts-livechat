@@ -25,6 +25,7 @@
     "@types/cors": "^2.8.17",
     "@types/helmet": "^4.0.0",
     "@types/winston": "^2.4.4",
+    "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "compression": "^1.7.5",
     "cors": "^2.8.5",

@@ -15,7 +15,7 @@ class UserController {
   }
 
   // Mendapatkan semua pengguna
-  async getAllUsers(req: Request, res: Response): Promise<Response> {
+  async getAllUsers(req: Request, res: Response) {
     try {
       const users = await this.userModel.getAllUsers();
       return res.status(200).json(users); // Respond with users
@@ -28,7 +28,7 @@ class UserController {
   async getUserById(req: Request, res: Response) {
     const { id } = req.params;
     try {
-      const user = await this.userModel.getUserById(Number(id));
+      const user = await this.userModel.getUserById(id);
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
@@ -42,7 +42,7 @@ class UserController {
   async updateUser(req: Request, res: Response) {
     const { id } = req.params;
     try {
-      const updatedUser = await this.userModel.updateUser(Number(id), req.body);
+      const updatedUser = await this.userModel.updateUser(id, req.body);
       if (!updatedUser) {
         return res.status(404).json({ message: "User not found" });
       }
@@ -56,7 +56,7 @@ class UserController {
   async deleteUser(req: Request, res: Response) {
     const { id } = req.params;
     try {
-      const user = await this.userModel.deleteUser(Number(id));
+      const user = await this.userModel.deleteUser(id);
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }

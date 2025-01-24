@@ -9,8 +9,8 @@ import { IsEmail, MinLength } from "class-validator";
 
 @Entity("users")
 export class User {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn("uuid")
+  id!: string;
 
   @Column()
   @MinLength(3)

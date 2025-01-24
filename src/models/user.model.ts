@@ -17,19 +17,21 @@ export class UserModel {
   }
 
   // Mencari pengguna berdasarkan id
-  async getUserById(id: number) {
-    return this.userRepository.findOneOrFail({ where: { id } });
+  async getUserById(id: string) {
+    return this.userRepository.findOneOrFail({ where: { id: id.toString() } });
   }
 
   // Memperbarui pengguna berdasarkan id
-  async updateUser(id: number, data: Partial<User>) {
+  async updateUser(id: string, data: Partial<User>) {
     await this.userRepository.update(id, data);
-    return this.userRepository.findOne({ where: { id } });
+    return this.userRepository.findOne({ where: { id: id.toString() } });
   }
 
   // Menghapus pengguna berdasarkan id
-  async deleteUser(id: number) {
-    const user = await this.userRepository.findOne({ where: { id } });
+  async deleteUser(id: string) {
+    const user = await this.userRepository.findOne({
+      where: { id: id.toString() },
+    });
     if (user) {
       await this.userRepository.remove(user);
     }

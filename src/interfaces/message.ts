@@ -2,5 +2,5 @@
 interface MessageInterface {
   statusCode: number;
   message: string;
-  data: unknown;
+  data?: unknown;
 }
