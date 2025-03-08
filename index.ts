@@ -5,17 +5,18 @@ import "express-async-errors";
 import dotEnv from "dotenv";
 import createApp from "./src/core/app.core";
 import { app, http, port } from "./src/core/http.core";
-import WebSocket from "./src/core/ws.core";
+// import WebSocket from "./src/core/ws.core";
 import coreRoutes from "./src/core/routes";
-import connectDatabase from "./src/databases/connect.database";
+// import { initializeServices } from "./src/utils/initService";
+// import connectDatabase from "./src/databases/connect.database";
 // import {provinceAndCitiesInit} from './src/utils';
 
 dotEnv.config();
 
 createApp(app);
 coreRoutes(app);
-connectDatabase();
-WebSocket(app);
+// connectDatabase();
+// WebSocket(app);
 // initializeServices();
 
 // provinceAndCitiesInit()
