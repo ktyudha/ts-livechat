@@ -47,7 +47,8 @@ router.post("/", (req, res) => {
 
   if (downlink && downlink.frm_payload) {
     const downlinkDecodedPayload = atob(downlink.frm_payload);
-    console.log(`Message Downlink: ${JSON.parse(downlinkDecodedPayload)}`);
+    const parsedPayload = JSON.parse(downlinkDecodedPayload);
+    console.log(`Message Downlink: ${JSON.stringify(parsedPayload, null, 2)}`);
   }
 
   if (uplink && uplink.frm_payload) {
