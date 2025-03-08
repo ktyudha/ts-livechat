@@ -45,14 +45,14 @@ router.post("/", (req, res) => {
   const downlink = data.downlink_sent;
   const uplink = data.uplink_message;
 
-  if (downlink) {
+  if (downlink && downlink.frm_payload) {
     const downlinkDecodedPayload = atob(downlink.frm_payload);
     console.log(`Message Downlink: ${JSON.parse(downlinkDecodedPayload)}`);
   }
 
-  if (uplink) {
+  if (uplink && uplink.frm_payload) {
     const uplinkDecodedPayload = atob(uplink.frm_payload);
-    console.log(`Message Uplink: ${JSON.parse(uplinkDecodedPayload)}`);
+    console.log(`Message Uplink: ${uplinkDecodedPayload}`);
   }
 
   res.status(200).send("Webhook received");
