@@ -43,7 +43,7 @@ router.post("/", (req, res) => {
 
   const downlink = data.downlink_sent;
   const uplink = data.uplink_message;
-  console.log(JSON.stringify(data, null, 2));
+  // console.log(JSON.stringify(data, null, 2));
 
   if (downlink && downlink.frm_payload) {
     const downlinkDecodedPayload = atob(downlink.frm_payload);
@@ -56,7 +56,11 @@ router.post("/", (req, res) => {
     const keys = ["temp", "hum", "ph"];
 
     console.log(
-      `Message Uplink: ${parseUplinkFlexible(uplinkDecodedPayload, keys)}`
+      `Message Uplink: ${JSON.stringify(
+        parseUplinkFlexible(uplinkDecodedPayload, keys),
+        null,
+        2
+      )}`
     );
   }
 
