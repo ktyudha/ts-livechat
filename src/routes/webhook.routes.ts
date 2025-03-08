@@ -40,18 +40,18 @@ router.post("/", (req, res) => {
   //   console.log("⚠️ No uplink_message found in the request");
   // }
 
-  console.log(JSON.stringify(data, null, 2));
+  // console.log(JSON.stringify(data, null, 2));
   const downlink = data.downlink_sent;
-  // const uplink = data.uplink_message;
+  const uplink = data.uplink_message;
 
   if (downlink.frm_payload) {
     const decodedPayload = atob(downlink.frm_payload);
     console.log(JSON.parse(decodedPayload));
   }
 
-  // if (uplink) {
-  //   console.log(uplink);
-  // }
+  if (uplink) {
+    console.log(uplink);
+  }
 
   res.status(200).send("Webhook received");
 });
