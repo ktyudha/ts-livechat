@@ -1,5 +1,6 @@
 import express from "express";
 import atob from "atob";
+import { parseUplinkFlexible } from "../helpers/parser";
 const router = express.Router();
 
 router.post("/", (req, res) => {
@@ -40,10 +41,9 @@ router.post("/", (req, res) => {
   //   console.log("⚠️ No uplink_message found in the request");
   // }
 
-  // console.log(JSON.stringify(data, null, 2));
-
   const downlink = data.downlink_sent;
   const uplink = data.uplink_message;
+  console.log(JSON.stringify(data, null, 2));
 
   if (downlink && downlink.frm_payload) {
     const downlinkDecodedPayload = atob(downlink.frm_payload);
@@ -53,7 +53,11 @@ router.post("/", (req, res) => {
 
   if (uplink && uplink.frm_payload) {
     const uplinkDecodedPayload = atob(uplink.frm_payload);
-    console.log(`Message Uplink: ${uplinkDecodedPayload}`);
+    const keys = ["temp", "hum", "ph"];
+
+    console.log(
+      `Message Uplink: ${parseUplinkFlexible(uplinkDecodedPayload, keys)}`
+    );
   }
 
   res.status(200).send("Webhook received");
