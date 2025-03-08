@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
           console.log("🔍 Payload is not JSON format");
         }
       } catch (err) {
-        console.error("❌ Error decoding payload:", err.message);
+        console.error("❌ Error decoding payload:");
       }
     } else {
       console.log("⚠️ No payload found");
