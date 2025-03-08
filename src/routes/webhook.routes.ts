@@ -41,10 +41,15 @@ router.post("/", (req, res) => {
   // }
 
   const downlink = data.downlink_sent;
-  // console.log(downlink);
+  const uplink = data.uplink_message;
+
   if (downlink.frm_payload) {
     const decodedPayload = atob(downlink.frm_payload);
     console.log(JSON.parse(decodedPayload));
+  }
+
+  if (uplink) {
+    console.log(uplink);
   }
 
   res.status(200).send("Webhook received");
